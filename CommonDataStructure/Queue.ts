@@ -127,4 +127,17 @@ export default class Queue<T> implements IQueue<T> {
         this.trail.Before = this.header;
         this.count = 0;
     }
+
+    /**
+     * Get all elements in queue
+     */
+    All(): T[] {
+        let result: T[] = [];
+        let startItem = this.header;
+        while (startItem.Next != null && startItem.Next != this.trail) {
+            result.push(startItem.Next.Value);
+            startItem = startItem.Next;
+        }
+        return result;
+    }
 }
