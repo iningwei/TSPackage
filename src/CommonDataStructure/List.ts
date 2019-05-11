@@ -1,30 +1,31 @@
 //不借用TypeScript的容器，实现 单向泛型链表
 
-//Node和ts自带类库同名，故用NodeX
-class NodeX<T> {
-    item: T = null;
-    next: NodeX<T> = null;
+class Item<T> {
+    value: T = null;
+    next: Item<T> = null;
 
-    constructor(private i: T, private n: NodeX<T>) {
-        this.item = i;
-        this.next = n;
+    constructor(private _value: T, private _next: Item<T>) {
+        this.value = _value;
+        this.next = _next;
     }
 }
 
 
 
 export class List<T> {
-    private head: NodeX<T>;
+
+    private head: Item<T>;
     constructor() {
         this.head = null;
     }
 
+    private count: number = 0;
     /**
      * 链表中增加一项数据
      * @param item 项
      */
     public Add(item: T) {
-        let newNode = new NodeX<T>(item, null);
+        let newNode = new Item<T>(item, null);
         if (this.head == null) {
             this.head = newNode;
         }
@@ -44,20 +45,22 @@ export class List<T> {
             }
             tmp.next = newNode;
         }
+
+        this.count++;
     }
 
     /**
      * 在指定位置往列表中插入数据项
-     * @param item 数据项
+     * @param value 数据项
      * @param index 指定位置
      */
-    public Insert(item: T, index: number): boolean {
-        if (index < 0 || index > this.count() - 1) {
+    public Insert(value: T, index: number): boolean {
+        if (index < 0 || index > this.count  - 1) {
             console.error("insert error, index:" + index + " may <0 or >count-1, if index>count-1 suggest you use Add()");
             return false;
         }
 
-        let newNode = new NodeX<T>(item, null);
+        let newNode = new Item<T>(value, null);
         if (index == 0) {//新节点为头结点
             newNode.next = this.head;
             this.head = newNode;
@@ -72,6 +75,7 @@ export class List<T> {
             newNode.next = oldNext;
         }
 
+        this.count++;
         return true;
     }
 
@@ -80,7 +84,7 @@ export class List<T> {
      * @param index 指定位置
      */
     public Remove(index: number): boolean {
-        if (index < 0 || index > this.count() - 1) {
+        if (index < 0 || index > this.count  - 1) {
             console.error("remove error,index:" + index + ", may <0 or >count-1");
             return false;
         }
@@ -98,15 +102,16 @@ export class List<T> {
             tmp.next = targetNode.next;
             targetNode = null;
         }
+        this.count--;
         return true;
     }
 
     /**
- * 根据位置获得Node
+ * 根据位置获得Item
  * @param index 位置
  */
-    public GetNode(index: number): NodeX<T> {
-        if (index < 0 || index > this.count() - 1) {
+    private getItem(index: number): Item<T> {
+        if (index < 0 || index > this.count  - 1) {
             console.error("GetNode error,index:" + index + ", may <0 or >count-1");
             return null;
         }
@@ -123,22 +128,7 @@ export class List<T> {
         }
     }
 
-    /**
-     * 修改节点数据
-     * @param index 
-     * @param item 
-     */
-    public SetNode(index: number, item: T): boolean {
-        let tmpNode = this.GetNode(index);
-        if (tmpNode != null) {
-            tmpNode.item = item;
-        }
-        else {
-            return false;
-        }
 
-        return true;
-    }
 
 
 
@@ -147,9 +137,9 @@ export class List<T> {
      * @param index 位置
      */
     public Get(index: number): T {
-        let r = this.GetNode(index);
+        let r = this.getItem(index);
         if (r != null) {
-            return r.item;
+            return r.value;
         }
         return null;
     }
@@ -160,9 +150,9 @@ export class List<T> {
      * @param item 新值
      */
     public Set(index: number, item: T): boolean {
-        let tmp = this.GetNode(index);
+        let tmp = this.GetItem(index);
         if (tmp != null) {
-            tmp.item = item;
+            tmp.value = item;
         }
         else {
             return false;
@@ -176,35 +166,18 @@ export class List<T> {
      */
     public Clear() {
         this.head = null;
+        this.count = 0;
     }
 
-    /**
-     * 计算链表长度
-     */
-    private count(): number {
-        let tmp = this.head;
-        if (tmp != null) {
-            let len = 1;
-            while (true) {
-                if (tmp.next != null) {
-                    len = len + 1;
-                    tmp = tmp.next;
-                }
-                else {
-                    break;
-                }
-            }
-            return len;
-        }
-        return 0;
-    }
+
 
     /**
      * get属性获取链表长度
      */
-    get Count(): Number {
-        return this.count();
+    public Count(): Number {
+        return this.count;
     }
-
+    
+//TODO:倒置
 
 }

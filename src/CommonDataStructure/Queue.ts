@@ -7,7 +7,7 @@ interface IQueue<T> {
      * 入队
      * @param item 
      */
-    Enqueue(item: T);
+    Enqueue(item: T):void;
     /**
      * 返回队顶对象，并删除
      */
@@ -15,7 +15,7 @@ interface IQueue<T> {
     Contains(item: T): boolean;
     Empty(): boolean;
     Count(): number;
-    Clear();
+    Clear():void;
 }
 
 
