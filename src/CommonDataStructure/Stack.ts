@@ -7,7 +7,7 @@ interface IStack<T> {
      * 向堆栈顶部添加对象
      * @param item 
      */
-    Push(item: T);
+    Push(item: T): void;
     /**
      * 移除并返回栈顶对象
      */
@@ -15,7 +15,7 @@ interface IStack<T> {
     Contains(item: T): boolean;
     Empty(): boolean;
     Count(): number;
-    Clear();
+    Clear(): void;
 
 }
 

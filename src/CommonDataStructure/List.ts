@@ -1,10 +1,11 @@
-//不借用TypeScript的容器，实现 单向泛型链表
+//单向泛型链表
+
 
 class Item<T> {
-    value: T = null;
-    next: Item<T> = null;
+    public value: T = null;
+    public next: Item<T> = null;
 
-    constructor(private _value: T, private _next: Item<T>) {
+    constructor(private _value: T, private _next: Item<T> = null) {
         this.value = _value;
         this.next = _next;
     }
@@ -13,10 +14,10 @@ class Item<T> {
 
 
 export class List<T> {
+    private header: Item<T>;//头指针
 
-    private head: Item<T>;
     constructor() {
-        this.head = null;
+        this.header = new Item(null, null);
     }
 
     private count: number = 0;
@@ -25,27 +26,13 @@ export class List<T> {
      * @param item 项
      */
     public Add(item: T) {
-        let newNode = new Item<T>(item, null);
-        if (this.head == null) {
-            this.head = newNode;
-        }
-        else {
-            //头结点数据不为空
-            //则从头结点的指针访问下一个节点，当指针指向的数据为空时，说明查询到末端
-            //此时把指针指向这个新加入的节点即可
-            let tmp = this.head;
+        let newNode = new Item<T>(item);
 
-            while (true) {
-                if (tmp.next != null) {
-                    tmp = tmp.next;
-                }
-                else {
-                    break;
-                }
-            }
-            tmp.next = newNode;
+        let last: Item<T> = this.header;
+        while (last.next != null) {
+            last = last.next;
         }
-
+        last.next = newNode;
         this.count++;
     }
 
@@ -55,25 +42,24 @@ export class List<T> {
      * @param index 指定位置
      */
     public Insert(value: T, index: number): boolean {
-        if (index < 0 || index > this.count  - 1) {
+        if (index < 0 || index > this.count - 1) {
             console.error("insert error, index:" + index + " may <0 or >count-1, if index>count-1 suggest you use Add()");
             return false;
         }
 
-        let newNode = new Item<T>(value, null);
-        if (index == 0) {//新节点为头结点
-            newNode.next = this.head;
-            this.head = newNode;
+        let tmp;
+        if (index == 0) {
+            tmp = this.header;
         }
         else {
-            let tmp = this.head;
-            for (let i = 1; i < index; i++) {//循环找到插入位置的前一个节点
-                tmp = tmp.next;
-            }
-            let oldNext = tmp.next;
-            tmp.next = newNode;
-            newNode.next = oldNext;
+            tmp = this.getItem(index - 1);//插入位置的前一个节点
         }
+
+
+        let newNode = new Item<T>(value);
+        let oldNext = tmp.next;
+        tmp.next = newNode;
+        newNode.next = oldNext;
 
         this.count++;
         return true;
@@ -84,24 +70,15 @@ export class List<T> {
      * @param index 指定位置
      */
     public Remove(index: number): boolean {
-        if (index < 0 || index > this.count  - 1) {
+        if (index < 0 || index > this.count - 1) {
             console.error("remove error,index:" + index + ", may <0 or >count-1");
             return false;
         }
 
-        if (index == 0) {
-            this.head = this.head.next;
-        }
-        else {
-            let tmp = this.head;
-            let targetNode = null;
-            for (let i = 1; i < index; i++) {
-                tmp = tmp.next;
-            }
-            targetNode = tmp.next;
-            tmp.next = targetNode.next;
-            targetNode = null;
-        }
+        let target = this.getItem(index);
+        this.header.next = target.next;
+
+
         this.count--;
         return true;
     }
@@ -111,21 +88,17 @@ export class List<T> {
  * @param index 位置
  */
     private getItem(index: number): Item<T> {
-        if (index < 0 || index > this.count  - 1) {
-            console.error("GetNode error,index:" + index + ", may <0 or >count-1");
+        if (index < 0 || index > this.count - 1) {
+            console.error("getItem error,index:" + index + ", may <0 or >count-1");
             return null;
         }
 
-        if (index == 0) {
-            return this.head;
+
+        let tmp = this.header;
+        for (let i = 0; i <= index; i++) {
+            tmp = tmp.next;
         }
-        else {
-            let tmp = this.head;
-            for (let i = 0; i < index; i++) {
-                tmp = tmp.next;
-            }
-            return tmp;
-        }
+        return tmp;
     }
 
 
@@ -150,7 +123,7 @@ export class List<T> {
      * @param item 新值
      */
     public Set(index: number, item: T): boolean {
-        let tmp = this.GetItem(index);
+        let tmp = this.getItem(index);
         if (tmp != null) {
             tmp.value = item;
         }
@@ -165,7 +138,7 @@ export class List<T> {
      * 清除所有数据
      */
     public Clear() {
-        this.head = null;
+        this.header.next = null;
         this.count = 0;
     }
 
@@ -177,7 +150,15 @@ export class List<T> {
     public Count(): Number {
         return this.count;
     }
-    
-//TODO:倒置
+
+    public IsEmpty(): boolean {
+        return this.count === 0;
+    }
+
+    public Reverse() {
+
+         
+
+    }
 
 }
