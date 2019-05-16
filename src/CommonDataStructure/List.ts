@@ -2,10 +2,10 @@
 
 
 class Item<T> {
-    public value: T = null;
-    public next: Item<T> = null;
+    public value: T=null;
+    public next: Item<T>=null;
 
-    constructor(private _value: T, private _next: Item<T> = null) {
+    constructor(private _value: T, private _next: Item<T>=null) {
         this.value = _value;
         this.next = _next;
     }
@@ -157,7 +157,7 @@ export class List<T> {
 
     public Reverse() {
 
-         
+
 
     }
 
