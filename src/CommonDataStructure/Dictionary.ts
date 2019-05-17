@@ -21,8 +21,10 @@ export class Dictionary<K, V>   {
      */
     Remove(key: K) {
         let index = this.keys.indexOf(key, 0);
+		if(index!=-1){
         this.keys.splice(index, 1);
         this.values.splice(index, 1);
+		}
     }
 
     /**
