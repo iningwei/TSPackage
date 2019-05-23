@@ -2,10 +2,10 @@
 
 
 class Item<T> {
-    public value: T=null;
-    public next: Item<T>=null;
+    public value: T = null;
+    public next: Item<T> = null;
 
-    constructor(private _value: T, private _next: Item<T>=null) {
+    constructor(private _value: T, private _next: Item<T> = null) {
         this.value = _value;
         this.next = _next;
     }
@@ -120,12 +120,12 @@ export class List<T> {
     /**
      * 更新链表中数据
      * @param index 位置
-     * @param item 新值
+     * @param value 新值
      */
-    public Set(index: number, item: T): boolean {
+    public Set(index: number, value: T): boolean {
         let tmp = this.getItem(index);
         if (tmp != null) {
-            tmp.value = item;
+            tmp.value = value;
         }
         else {
             return false;
@@ -155,10 +155,20 @@ export class List<T> {
         return this.count === 0;
     }
 
+
+    //TODO:
     public Reverse() {
-
-
-
+        let tmp: Item<T> = this.header.next;
+        let oldNext = tmp.next;
+        while (tmp != null && oldNext != null) {
+            let oldTmp = tmp;
+            tmp = oldNext;
+            oldNext = oldNext.next;
+            tmp.next = oldTmp;
+            if (oldTmp.next == tmp) {
+                oldTmp.next = null;
+            }
+        }
+        this.header.next = tmp;
     }
-
 }
