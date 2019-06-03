@@ -155,8 +155,7 @@ export class List<T> {
         return this.count === 0;
     }
 
-
-    //TODO:
+   
     public Reverse() {
         let tmp: Item<T> = this.header.next;
         let oldNext = tmp.next;
