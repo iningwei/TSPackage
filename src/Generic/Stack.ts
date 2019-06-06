@@ -54,7 +54,6 @@ export default class Stack<T> implements IStack<T>{
         this.header = new Item<T>(null);
     }
 
-
     Peek(): T {
         if (this.count == 0) {
             return null;
@@ -68,6 +67,7 @@ export default class Stack<T> implements IStack<T>{
         this.header.Next = newItem;
         this.count++;
     }
+
     Pop(): T {
         if (this.count == 0) {
             return null;
