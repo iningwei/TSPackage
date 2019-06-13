@@ -1,6 +1,4 @@
 //单向泛型链表
-
-
 class Item<T> {
     public value: T = null;
     public next: Item<T> = null;
@@ -84,9 +82,9 @@ export class List<T> {
     }
 
     /**
- * 根据位置获得Item
- * @param index 位置
- */
+     * 根据位置获得Item
+     * @param index 位置
+     */
     private getItem(index: number): Item<T> {
         if (index < 0 || index > this.count - 1) {
             console.error("getItem error,index:" + index + ", may <0 or >count-1");
@@ -145,9 +143,9 @@ export class List<T> {
 
 
     /**
-     * get属性获取链表长度
+     * get 属性获取链表长度
      */
-    public Count(): Number {
+    get Count(): Number {
         return this.count;
     }
 
@@ -155,7 +153,10 @@ export class List<T> {
         return this.count === 0;
     }
 
-   
+
+    /**
+     * 链表反转
+     */
     public Reverse() {
         let tmp: Item<T> = this.header.next;
         let oldNext = tmp.next;
