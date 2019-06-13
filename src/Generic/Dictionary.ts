@@ -1,6 +1,6 @@
 /**
- * 根据C#字典方式设计
- * 并没有实现hash结构
+ * 一个很像C#中Dictionary结构的字典
+ * 但是并没有实现hash结构，借用数组来存储key和value，因此其是有序的 
  */
 export class Dictionary<K, V>   {
     private keys: K[] = [];

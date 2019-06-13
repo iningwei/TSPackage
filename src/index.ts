@@ -29,14 +29,49 @@ import Debug from "./Debug";
 // }
 
 
-let dic: Dictionary<number, number> = new Dictionary<number, number>();
-dic.Add(1, 444);
-dic.Add(2, 213);
+// let dic: Dictionary<number, number> = new Dictionary<number, number>();
+// dic.Add(1, 444);
+// dic.Add(2, 213);
+// dic.Add(3, 223);
+// dic.Add(4, 243);
+// dic.Add(5, 2113);
 
-console.log("test:" + dic[2]);
-dic[2] = 999;
-let keys = dic.Keys;
-for (let i = 0; i < keys.length; i++) {
-    console.log("key:" + keys[i] + ", value:" + dic[keys[i]]);
+// dic.Remove(4);
+// console.log("test:" + dic[2]);
+// console.log("test:" + dic[4]);
+// dic[2] = 999;
+// let keys = dic.Keys;
+// for (let i = 0; i < keys.length; i++) {
+//     console.log("key:" + keys[i] + ", value:" + dic[keys[i]]);
+// }
+
+
+let list: List<number> = new List<number>();
+list.Add(1);
+list.Add(31);
+list.Add(1);
+list.Add(2);
+list.Add(3);
+list.Add(3);
+list.Add(392);
+list.Remove(3);
+list.RemoveAt(3);
+list.SetAt(0,1234);
+
+console.log("x0:" + list.GetAt(0));
+console.log("x1:" + list.Remove(38));
+console.log("x2:" + list.Contains(999));
+console.log("x3:" + list.IndexOf(392));
+console.log("x4:" + list.Contains(31));
+
+
+for (let i = 0; i < list.Count; i++) {
+    console.log(list.GetAt(i));
 }
+
+console.log("------------------>");
+list.Log();
+
+
+
 
