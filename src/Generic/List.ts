@@ -1,7 +1,7 @@
 /**
  * 单向泛型链表
  * 一个很像C#中List的链表
- * 不支持[]索引的方式，需要使用GetAt方法
+ * 不支持[]索引的方式，需要使用GetAt(),SetAt()方法代替
  */
 class Node<T> {
     public value: T = null;
@@ -119,7 +119,7 @@ export class List<T> {
             }
             beforeNode = tmp;
             tmp = tmp.next;
-        } 
+        }
 
     }
 
@@ -161,11 +161,11 @@ export class List<T> {
     public GetAt(index: number): T {
         if (index < 0 || index > this.count - 1) {
             throw ("GetAt error, index:" + index + ", out of range");
-            
+
         }
         let curIndex = -1;
         let tmp = this.header.next;
-        if (tmp != null) {
+        while (tmp != null) {
             curIndex++;
             if (curIndex == index) {
                 return tmp.value;
@@ -175,8 +175,8 @@ export class List<T> {
         return null;
     }
 
-    public SetAt(index:number,value:T){   
-        this.getNodeAt(index).value=value;
+    public SetAt(index: number, value: T) {
+        this.getNodeAt(index).value = value;
     }
 
     private getNodeAt(index: number): Node<T> {
@@ -243,9 +243,9 @@ export class List<T> {
      * 提供一个方法，用来Log输出List中的所有数据
      */
     public Log() {
-        let tmp = this.header;
+        let tmp = this.header.next;
         let str: string = "";
-        while (tmp.next != null) {
+        while (tmp != null) {
             str = str + tmp.value + ",";
             tmp = tmp.next;
         }
