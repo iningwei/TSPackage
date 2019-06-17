@@ -212,7 +212,7 @@ export class List<T> {
     /**
      * 获取链表长度
      */
-    get Count(): Number {
+    get Count(): number {
         return this.count;
     }
 

@@ -58,6 +58,7 @@ list.Remove(3);
 list.RemoveAt(3);
 list.SetAt(0,1234);
 
+
 console.log("x0:" + list.GetAt(0));
 console.log("x1:" + list.Remove(38));
 console.log("x2:" + list.Contains(999));
