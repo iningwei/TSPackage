@@ -22,7 +22,9 @@ export default class StringExt {
     }
 
     /**
-     * 
+     * you can use padStart(number,padChar) to replace this function
+     * padStart is a js function for string.but i have test is in CocosCreator enviroment,it warnning an error,no such function.
+     * but it works well.
      * @param target 
      * @param totalLen 
      * @param paddingChar 
@@ -41,4 +43,6 @@ export default class StringExt {
 
         return result;
     }
+
+
 }
