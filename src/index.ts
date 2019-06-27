@@ -46,32 +46,52 @@ import Debug from "./Debug";
 // }
 
 
-let list: List<number> = new List<number>();
-list.Add(1);
-list.Add(31);
-list.Add(1);
-list.Add(2);
-list.Add(3);
-list.Add(3);
-list.Add(392);
-list.Remove(3);
-list.RemoveAt(3);
-list.SetAt(0,1234);
 
 
-console.log("x0:" + list.GetAt(0));
-console.log("x1:" + list.Remove(38));
-console.log("x2:" + list.Contains(999));
-console.log("x3:" + list.IndexOf(392));
-console.log("x4:" + list.Contains(31));
+// ----------------------->
+// let list: List<number> = new List<number>();
+// list.Add(1);
+// list.Add(31);
+// list.Add(1);
+// list.Add(2);
+// list.Add(3);
+// list.Add(3);
+// list.Add(392);
+// list.Remove(3);
+// list.RemoveAt(3);
+// list.SetAt(0,1234);
 
 
-for (let i = 0; i < list.Count; i++) {
-    console.log(list.GetAt(i));
-}
+// console.log("x0:" + list.GetAt(0));
+// console.log("x1:" + list.Remove(38));
+// console.log("x2:" + list.Contains(999));
+// console.log("x3:" + list.IndexOf(392));
+// console.log("x4:" + list.Contains(31));
 
-console.log("------------------>");
-list.Log();
+
+// for (let i = 0; i < list.Count; i++) {
+//     console.log(list.GetAt(i));
+// }
+
+// console.log("------------------>");
+// list.Log();
+
+
+
+// ------>枚举
+// enum Color{red,green,blue,black};
+// let color:Color=Color.red;
+// let cc=Color[3];
+// Debug.Log(color.toString()+", "+Color[color]+", "+Color[4]);
+
+
+//---------->object类型为非基本类型外的其它类型，用来表示复杂类型
+// declare function create(o: object | null): void;
+// create({prop:0});
+// create(null);
+// create(42);//error
+// create("string");//error
+
 
 
 
