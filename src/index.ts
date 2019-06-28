@@ -79,10 +79,10 @@ import Debug from "./Debug";
 
 
 // ------>枚举
-// enum Color{red,green,blue,black};
+// enum Color{red,green,blue,black=12,grown,yellow="yellow",fuck="hehe"};
 // let color:Color=Color.red;
 // let cc=Color[3];
-// Debug.Log(color.toString()+", "+Color[color]+", "+Color[4]);
+// Debug.Log(color.toString()+", "+Color[color]+", "+Color[4]+", "+Color.yellow+", "+Color.black+", "+Color["hehe"]);
 
 
 //---------->object类型为非基本类型外的其它类型，用来表示复杂类型
