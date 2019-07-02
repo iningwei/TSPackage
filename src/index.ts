@@ -1,6 +1,7 @@
 import { Dictionary } from "./Generic/Dictionary";
 import { List } from "./Generic/List";
 import Debug from "./Debug";
+import StringExt from "./Extention/StringExt";
 
 // let list: List<number> = new List();
 // list.Add(2);
@@ -92,7 +93,11 @@ import Debug from "./Debug";
 // create(42);//error
 // create("string");//error
 
-
+let a = "hello";
+let b = StringExt.PadLeft2(a, 8, 'X');
+let c = StringExt.PadLeft2(a, 3, 'x');
+Debug.Log("b:" + b);
+Debug.Log("c:" + c);
 
 
 

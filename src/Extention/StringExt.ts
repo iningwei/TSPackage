@@ -22,14 +22,12 @@ export default class StringExt {
     }
 
     /**
-     * you can use padStart(number,padChar) to replace this function
-     * padStart is a js function for string.but i have test is in CocosCreator enviroment,it warnning an error,no such function.
-     * but it works well.
+     * 
      * @param target 
      * @param totalLen 
      * @param paddingChar 
      */
-    public static PadLeft(target: any, totalLen: number, paddingChar: any = "0"):string {
+    public static PadLeft(target: any, totalLen: number, paddingChar: any = "0"): string {
         if (String(paddingChar).length != 1) {
             console.error("error,paddingChar should only have one char");
         }
@@ -42,6 +40,17 @@ export default class StringExt {
         }
 
         return result;
+    }
+
+
+
+    public static PadLeft2(target: any, totalLen: number, paddingChar: any = "0"): string {
+        if (String(paddingChar).length != 1) {
+            console.error("error,paddingChar should only have one char");
+        }
+
+        return (Array(totalLen).join(paddingChar) + target).slice(-totalLen);
+        // return (Array(totalLen).join(paddingChar) + target).substr(-totalLen);//also worked
     }
 
 
