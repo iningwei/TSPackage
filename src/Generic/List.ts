@@ -239,6 +239,18 @@ export class List<T> {
         this.header.next = tmp;
     }
 
+    public ToArray():Array<T>{
+        let result:Array<T>=new Array<T>();
+        let tmp:Node<T>=this.header.next;
+        while (tmp!=null) {
+            result.push(tmp.value);
+            tmp=tmp.next;
+        }
+        return result;
+    }
+
+
+
     /**
      * 提供一个方法，用来Log输出List中的所有数据
      */

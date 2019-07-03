@@ -93,11 +93,34 @@ import StringExt from "./Extention/StringExt";
 // create(42);//error
 // create("string");//error
 
-let a = "hello";
-let b = StringExt.PadLeft2(a, 8, 'X');
-let c = StringExt.PadLeft2(a, 3, 'x');
-Debug.Log("b:" + b);
-Debug.Log("c:" + c);
+// let a = "hello";
+// let b = StringExt.PadLeft2(a, 8, 'X');
+// let c = StringExt.PadLeft2(a, 3, 'x');
+// Debug.Log("b:" + b);
+// Debug.Log("c:" + c);
 
 
 
+// let a = 1;
+// let b = a;
+// a = 3;
+// Debug.Log("a:" + a + ", b:" + b);
+
+
+
+// let c = { x1: 3, x2: 4 };
+// let d = c;
+// c.x1 = 111;
+// Debug.Log("c:" + c.x1 + ", d:" + d.x1);
+
+
+// let v = [2, 4];
+// let [first, second] = v;
+// Debug.Log(first + "," + second);
+
+function test(obj: { a: string, b?: number }): void {
+    let { a, b = 233 } = obj;
+    Debug.Log("a:" + a + ", b:" + b);
+}
+
+test({ a: "s" });
