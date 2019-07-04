@@ -2,6 +2,7 @@ import { Dictionary } from "./Generic/Dictionary";
 import { List } from "./Generic/List";
 import Debug from "./Debug";
 import StringExt from "./Extention/StringExt";
+import { Sort } from "./Algorithm/Sort";
 
 // let list: List<number> = new List();
 // list.Add(2);
@@ -118,9 +119,25 @@ import StringExt from "./Extention/StringExt";
 // let [first, second] = v;
 // Debug.Log(first + "," + second);
 
-function test(obj: { a: string, b?: number }): void {
-    let { a, b = 233 } = obj;
-    Debug.Log("a:" + a + ", b:" + b);
-}
+// function test(obj: { a: string, b?: number }): void {
+//     let { a, b = 233 } = obj;
+//     Debug.Log("a:" + a + ", b:" + b);
+// }
 
-test({ a: "s" });
+// test({ a: "s" });
+
+
+
+// let a = [1, 2];
+// let b = [9, 0];
+// let c = [22, ...a, ...b, 999];
+// Debug.Log(c);
+// a[0] = 89;
+// Debug.Log("a:" + a);
+// Debug.Log("c:" + c);
+
+
+
+let arr: number[] = [3, 534, 245, 333, 89, 2, 65, 2];
+Sort.Select(arr);
+Debug.Log("Select:"+arr);
