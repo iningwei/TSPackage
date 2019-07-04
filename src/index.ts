@@ -138,6 +138,20 @@ import { Sort } from "./Algorithm/Sort";
 
 
 
-let arr: number[] = [3, 534, 245, 333, 89, 2, 65, 2];
-Sort.Select(arr);
-Debug.Log("Select:"+arr);
+
+
+
+// let arr: number[] = [3, 534, 245, 333, 89, 2, 65, 2];
+// Sort.Select(arr);
+// Debug.Log("Select:"+arr);
+
+
+
+let arrr: string[] = ["smith", "jack"];
+function ddd(s: string, ...arr): void {
+    let r =this+","+ s + "," + arr.join(",");  
+    Debug.Log(r);
+}
+ 
+ddd.call("ppp",arrr,"OOO");
+// ddd("zjm","lp","qs","mzd",arrr);
