@@ -1,8 +1,4 @@
-/**
- * 单向泛型链表
- * 一个很像C#中List的链表
- * 不支持[]索引的方式，需要使用GetAt(),SetAt()方法代替
- */
+
 class Node<T> {
     public value: T = null;
     public next: Node<T> = null;
@@ -14,7 +10,11 @@ class Node<T> {
 }
 
 
-
+/**
+ * 单向泛型链表
+ * 一个很像C#中List的链表
+ * 不支持[]索引的方式，需要使用GetAt(),SetAt()方法代替
+ */
 export class List<T> {
     private header: Node<T>;//头指针
 
