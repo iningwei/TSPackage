@@ -1,4 +1,8 @@
-
+/**
+ * 单向泛型链表
+ * 一个很像C#中List的链表
+ * 不支持[]索引的方式，需要使用GetAt(),SetAt()方法代替
+ */
 class Node<T> {
     public value: T = null;
     public next: Node<T> = null;
@@ -10,11 +14,7 @@ class Node<T> {
 }
 
 
-/**
- * 单向泛型链表
- * 一个很像C#中List的链表
- * 不支持[]索引的方式，需要使用GetAt(),SetAt()方法代替
- */
+
 export class List<T> {
     private header: Node<T>;//头指针
 
@@ -161,7 +161,6 @@ export class List<T> {
     public GetAt(index: number): T {
         if (index < 0 || index > this.count - 1) {
             throw ("GetAt error, index:" + index + ", out of range");
-
         }
         let curIndex = -1;
         let tmp = this.header.next;
@@ -182,18 +181,16 @@ export class List<T> {
     private getNodeAt(index: number): Node<T> {
         if (index < 0 || index > this.count - 1) {
             throw ("GetAt error, index:" + index + ", out of range");
-            return null;
         }
         let curIndex = -1;
         let tmp = this.header.next;
-        if (tmp != null) {
+        while (tmp != null) {
             curIndex++;
             if (curIndex == index) {
                 return tmp;
             }
             tmp = tmp.next;
         }
-
         return null;
     }
 
@@ -239,12 +236,12 @@ export class List<T> {
         this.header.next = tmp;
     }
 
-    public ToArray():Array<T>{
-        let result:Array<T>=new Array<T>();
-        let tmp:Node<T>=this.header.next;
-        while (tmp!=null) {
+    public ToArray(): Array<T> {
+        let result: Array<T> = new Array<T>();
+        let tmp: Node<T> = this.header.next;
+        while (tmp != null) {
             result.push(tmp.value);
-            tmp=tmp.next;
+            tmp = tmp.next;
         }
         return result;
     }
