@@ -1,8 +1,7 @@
-import { Dictionary } from "./Generic/Dictionary";
-import { List } from "./Generic/List";
-import Debug from "./Debug";
-import StringExt from "./Extention/StringExt";
-import { Sort } from "./Algorithm/Sort";
+import Debug from "./SelfTool/Debug";
+import { Sort } from "./SelfTool/Algorithm/Sort";
+import { FinalRandom } from "./SelfTool/Tool/FinalRandom/FinalRandom";
+
 
 // let list: List<number> = new List();
 // list.Add(2);
@@ -138,20 +137,22 @@ import { Sort } from "./Algorithm/Sort";
 
 
 
-
-
-
-// let arr: number[] = [3, 534, 245, 333, 89, 2, 65, 2];
-// Sort.Select(arr);
-// Debug.Log("Select:"+arr);
-
-
-
-let arrr: string[] = ["smith", "jack"];
-function ddd(s: string, ...arr): void {
-    let r =this+","+ s + "," + arr.join(",");  
-    Debug.Log(r);
+function xx() {
+    let arr: number[] = [];
+    for (let i = 0; i < 2000000; i++) {
+        arr.push(FinalRandom.RandIntBetween(0, 10000));
+    }
 }
- 
-ddd.call("ppp",arrr,"OOO");
-// ddd("zjm","lp","qs","mzd",arrr);
+
+console.time("1");
+let arr: number[] = [];
+for (let i = 0; i < 20000; i++) {
+    arr.push(FinalRandom.RandIntBetween(0, 10000));
+}
+console.timeEnd("1");
+Debug.Log("----->")
+
+console.time("2");
+Sort.Insert(arr);
+console.timeEnd("2");
+// Debug.Log("Insert x a:" + arr);
