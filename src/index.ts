@@ -137,22 +137,27 @@ import { FinalRandom } from "./SelfTool/Tool/FinalRandom/FinalRandom";
 
 
 
-function xx() {
-    let arr: number[] = [];
-    for (let i = 0; i < 2000000; i++) {
-        arr.push(FinalRandom.RandIntBetween(0, 10000));
-    }
-}
 
-console.time("1");
-let arr: number[] = [];
-for (let i = 0; i < 20000; i++) {
-    arr.push(FinalRandom.RandIntBetween(0, 10000));
-}
-console.timeEnd("1");
-Debug.Log("----->")
 
-console.time("2");
-Sort.Insert(arr);
-console.timeEnd("2");
+// console.time("1");
+// let arr: number[] = [];
+// for (let i = 0; i < 20000; i++) {
+//     arr.push(FinalRandom.RandIntBetween(0, 10000));
+// }
+// console.timeEnd("1");
+// Debug.Log("----->")
+
+// console.time("2");
+// Sort.Insert(arr);
+// console.timeEnd("2");
 // Debug.Log("Insert x a:" + arr);
+
+
+
+function getProperty<T, K extends keyof T>(obj: T, key: K) {
+    return obj[key];
+}
+let x = { a: 1, b: 2, c: 3, d: 4 };
+let r = getProperty(x, "a");
+Debug.Log("r:" + r);
+
