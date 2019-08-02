@@ -80,17 +80,27 @@ export default class NumberExt {
         }
         let x = Math.pow(10, len);
         let r = Math.floor(num * (x)) / x;
-        if (r.toString().indexOf(".") == -1) {//结果没有小数点。 比如num=100，len=2。按照上述计算结果r=100
-            let str = r.toString() + ".";
+
+        let rStr = r.toString();
+        if (rStr.indexOf(".") == -1) {//结果没有小数点。 比如num=100，len=2。按照上述计算结果r=100
+            let str = rStr + ".";
             for (let i = 0; i < len; i++) {
                 str += "0";
             }
             return str;
         }
-        else {
-            return r.toString();
+        else if (rStr.indexOf(".") != -1) {//最终有小数点，若位数不够，继续补0。比如num=1.3,len=2。最终的结果r还是1.3
+            let strs = rStr.split(".");
+            let len2 = strs[1].length;
+            if (len2 < len) {
+                for (let i = 0; i < len - len2; i++) {
+                    rStr += "0";
+                }
+                return rStr;
+            }
+            else {
+                return rStr;
+            }
         }
     }
-
-
 }
