@@ -154,10 +154,18 @@ import { FinalRandom } from "./SelfTool/Tool/FinalRandom/FinalRandom";
 
 
 
-function getProperty<T, K extends keyof T>(obj: T, key: K) {
-    return obj[key];
-}
-let x = { a: 1, b: 2, c: 3, d: 4 };
-let r = getProperty(x, "a");
-Debug.Log("r:" + r);
+// function getProperty<T, K extends keyof T>(obj: T, key: K) {
+//     return obj[key];
+// }
+// let x = { a: 1, b: 2, c: 3, d: 4 };
+// let r = getProperty(x, "a");
+// Debug.Log("r:" + r);
 
+
+enum Color {
+    Red = "e/Red",
+    Green = "e/Green",
+    Blue = "e/Blue"
+}
+Debug.Log(Color.Red);
+Debug.Log(Color.Blue.toString());
