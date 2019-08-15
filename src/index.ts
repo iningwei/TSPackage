@@ -162,10 +162,34 @@ import { FinalRandom } from "./SelfTool/Tool/FinalRandom/FinalRandom";
 // Debug.Log("r:" + r);
 
 
-enum Color {
-    Red = "e/Red",
-    Green = "e/Green",
-    Blue = "e/Blue"
-}
-Debug.Log(Color.Red);
-Debug.Log(Color.Blue.toString());
+// enum Color {
+//     Red = "e/Red",
+//     Green = "e/Green",
+//     Blue = "e/Blue"
+// }
+// Debug.Log(Color.Red);
+// Debug.Log(Color.Blue.toString());
+
+// let t: any;
+// t.name = "good";
+// t.bag = "t";
+// let g = t.go();
+// console.log("t.name:" + t.name + ",g:" + g);
+
+// let anyThing: any = 'hello';
+// console.log(anyThing.myName);
+// console.log(anyThing.myName.firstName);
+
+// let anyThing: any = 'Tom';
+// anyThing.setName('Jerry');
+// anyThing.setName('Jerry').sayHello();
+// anyThing.myName.setFirstName('Cat');
+
+let sss;
+
+
+let aStr: string = "a";
+let a: number = aStr.charCodeAt();
+console.log("a:" + a);
+
+console.log("finished");

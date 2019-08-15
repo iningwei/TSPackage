@@ -44,6 +44,29 @@ export default class NumberExt {
         "za", "zb", "zc", "zd", "ze", "zf", "zg", "zh", "zi", "zj", "zk", "zl", "zm", "zn", "zo", "zp", "zq", "zr", "zs", "zt", "zu", "zv", "zw", "zx", "zy", "zz",];
 
 
+
+    private static getLetterByIndex(index: number): string {
+        if (index == 0) {
+            return "K";
+        }
+        else if (index == 1) {
+            return "M";
+        }
+        else if (index == 2) {
+            return "B";
+        }
+        else//从index>=3开始需要使用aa,ab...这种表示方法//a的ascii码从97开始。A的ascii码从65开始
+        {
+            let tmp1 = Math.floor((index - 3) / 26);
+            tmp1 = tmp1 + 97;
+
+            let tmp2 = ((index - 3) % 26);
+            tmp2 = tmp2 + 97;
+            return String.fromCharCode(tmp1, tmp2);
+        }
+
+    }
+
     /**
      * 1000以内不需要转换
      * 假设floatFixedLen=2,那么有：
@@ -56,7 +79,8 @@ export default class NumberExt {
         let index = 0;
         let yu = 0;//余数
         while (value / 1000 > 1) {
-            letter = this.letter[index];
+            // letter = this.letter[index];//no longer use such ugly method to get target letter.
+            letter = this.getLetterByIndex(index);
             yu = value % 1000;
             value = value / 1000;
             index++;
