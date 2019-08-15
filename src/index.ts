@@ -185,11 +185,18 @@ import { FinalRandom } from "./SelfTool/Tool/FinalRandom/FinalRandom";
 // anyThing.setName('Jerry').sayHello();
 // anyThing.myName.setFirstName('Cat');
 
-let sss;
 
+interface Person {
+    name: string;
+    age: number;
+    job?: string;
+}
 
-let aStr: string = "a";
-let a: number = aStr.charCodeAt();
-console.log("a:" + a);
-
-console.log("finished");
+let tom: Person = {
+    name: "tom",
+    age: 10
+}
+let jim: Person = {
+    name: "jim",
+    age: 10
+}
