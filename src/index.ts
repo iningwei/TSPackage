@@ -1,8 +1,4 @@
-import Debug from "./SelfTool/Debug";
-import { Sort } from "./SelfTool/Algorithm/Sort";
-import { FinalRandom } from "./SelfTool/Tool/FinalRandom/FinalRandom";
-
-
+ 
 // let list: List<number> = new List();
 // list.Add(2);
 // list.Add(3);
