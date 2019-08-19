@@ -1,4 +1,5 @@
-import Debug from "../Debug";
+import Debug from "../Debug/Debug";
+
 
 export default class NumberExt {
 

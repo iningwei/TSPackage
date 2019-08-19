@@ -1,7 +1,10 @@
+import Debug from "../Debug/Debug";
+
 /**
  * 一个很像C#中Dictionary结构的字典
  * 但是并没有实现hash结构，借用数组来存储key和value，因此其是有序的 
- * 支持索引的方式取值，和设置值
+ * 支持索引的方式取值
+ * 切勿通过索引的方式设置值，特别是设置一个新索引， 会导致keys，values无法对应上
  */
 export class Dictionary<K, V>   {
     private keys: K[] = [];
@@ -51,6 +54,16 @@ export class Dictionary<K, V>   {
             return true;
         }
         return false;
+    }
+
+    GetValue(key: K): V {
+        let index = this.keys.indexOf(key, 0);
+        if (index != -1) {
+
+            return this.values[index];;
+        }
+        Debug.Error("error, get value failed, no value with key:" + key);
+        return null;
     }
 
     /**

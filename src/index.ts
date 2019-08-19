@@ -1,4 +1,7 @@
- 
+import { Dictionary } from "./TSTools/Generic/Dictionary";
+import Debug from "./TSTools/Debug/Debug";
+
+
 // let list: List<number> = new List();
 // list.Add(2);
 // list.Add(3);
@@ -182,17 +185,29 @@
 // anyThing.myName.setFirstName('Cat');
 
 
-interface Person {
-    name: string;
-    age: number;
-    job?: string;
-}
 
-let tom: Person = {
-    name: "tom",
-    age: 10
-}
-let jim: Person = {
-    name: "jim",
-    age: 10
-}
+
+let x: Dictionary<string, any[]> = new Dictionary();
+x.Add("t1", [123, "jo"]);
+x.Add("t2", 444);
+ 
+
+Debug.Log("length:" + x.Count);
+Debug.Log(x["t1"]);
+Debug.Log(x["t2"]);
+
+// interface Person {
+//     name: string;
+//     age: number;
+//     job?: string;
+// }
+
+// let tom: Person = {
+//     name: "tom",
+//     age: 10
+// }
+// let jim: Person = {
+//     name: "jim",
+//     age: 10
+// }
+
