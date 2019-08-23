@@ -3,8 +3,7 @@ import Debug from "../Debug/Debug";
 /**
  * 一个很像C#中Dictionary结构的字典
  * 但是并没有实现hash结构，借用数组来存储key和value，因此其是有序的 
- * 支持索引的方式取值
- * 切勿通过索引的方式设置值，特别是设置一个新索引， 会导致keys，values无法对应上
+ * 不支持[]的方式对字典设值和取值
  */
 export class Dictionary<K, V>   {
     private keys: K[] = [];
@@ -19,11 +18,10 @@ export class Dictionary<K, V>   {
      * @param key 
      * @param value 
      */
-    Add(key: any, value: any) {
+    Add(key: K, value: V) {
         if (this.ContainsKey(key)) {
             throw "dulicate key:" + key;//抛出异常
         }
-        this[key] = value;
         this.keys.push(key);
         this.values.push(value);
     }
@@ -32,12 +30,11 @@ export class Dictionary<K, V>   {
      * 根据键名，移除键值对    
      * @param key 要移除的键
      */
-    Remove(key: any) {
+    Remove(key: K) {
         let index = this.keys.indexOf(key, 0);
         if (index != -1) {
             this.keys.splice(index, 1);
             this.values.splice(index, 1);
-            delete this[key];
         }
     }
 
@@ -103,12 +100,11 @@ export class Dictionary<K, V>   {
      * @param key 键名 
      * @param value 新值
      */
-    SetDicValue(key: any, value: any): boolean {
+    SetDicValue(key: K, value: V): boolean {
         let index = this.keys.indexOf(key, 0);
         if (index != -1) {
             this.keys[index] = key;
             this.values[index] = value;
-            this[key] = value;
             return true;
         }
         return false;
