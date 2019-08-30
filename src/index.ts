@@ -1,5 +1,7 @@
 import { Dictionary } from "./TSTools/Generic/Dictionary";
 import Debug from "./TSTools/Debug/Debug";
+import { Sort } from "./TSTools/Algorithm/Sort";
+import { FinalRandom } from "./TSTools/FinalRandom/FinalRandom";
 
 
 // let list: List<number> = new List();
@@ -187,14 +189,34 @@ import Debug from "./TSTools/Debug/Debug";
 
 
 
-let x: Dictionary<string, any[]> = new Dictionary();
-x.Add("t1", [123, "jo"]);
-x.Add("t2", 444);
- 
+// let x: Dictionary<string, any[]> = new Dictionary();
+// x.Add("t1", [123, "jo"]);
+// x.Add("t2", [444]);
 
-Debug.Log("length:" + x.Count);
-Debug.Log(x["t1"]);
-Debug.Log(x["t2"]);
+
+// Debug.Log("length:" + x.Count);
+// Debug.Log(x["t1"]);
+// Debug.Log(x["t2"]);
+// let a: number[] = [43, 3, -5, 93, 1, -32, 9, -2, 3, 8, 4, 22];
+// Sort.Insert(a);
+// Debug.Log(a.toString());
+
+
+
+
+
+console.time("1");
+let arr: number[] = [];
+for (let i = 0; i < 3000; i++) {
+    arr.push(FinalRandom.RandIntBetween(-10000, 10000));
+}
+console.timeEnd("1");
+Debug.Log("----->")
+
+console.time("2");
+Sort.SelectPro(arr);
+console.timeEnd("2");
+Debug.Log("sort finished");
 
 // interface Person {
 //     name: string;

@@ -1,6 +1,6 @@
 export class Sort {
     /**
-     * 选择
+     * 选择排序
      * 时间复杂度O(n^2)
      * 空间复杂度O(1)
      * 稳定排序
@@ -23,9 +23,6 @@ export class Sort {
         }
     }
 
-
-
-
     /**
      * 选择排序
      * @param arr 
@@ -43,10 +40,15 @@ export class Sort {
                 }
             }
 
-            //交换
-            let t = arr[i];
-            arr[i] = arr[minIndex];
-            arr[minIndex] = t;
+            if (minIndex != i) {
+                //交换
+                let t = arr[i];
+                arr[i] = arr[minIndex];
+                arr[minIndex] = t;
+            }
+            else {
+                break;
+            }
         }
     }
 
@@ -94,8 +96,7 @@ export class Sort {
             }
         }
     }
-
-
+    //选择排序跟冒牌排序很类似，可以互相比较加深理解
 
 
 
@@ -124,7 +125,6 @@ export class Sort {
                     pos--;
                 }
             }
-
         }
     }
 }
